@@ -1,0 +1,21 @@
+greenlet>=0.3.1
+
+SQLAlchemy>=0.7
+anyjson
+eventlet>=0.9.12
+PasteDeploy
+Routes
+webob==1.0.8
+wsgiref
+argparse
+sqlalchemy-migrate>=0.7.2
+httplib2
+kombu
+iso8601>=0.1.4
+suds
+
+# For paste.util.template used in keystone.common.template
+Paste
+passlib
+
+-e git+https://github.com/Mirantis/openstack-lbaas.git#egg=balancer

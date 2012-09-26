@@ -1,0 +1,33 @@
+This is F5 BIG-IP LTM driver for OpenStack LBaaS project.
+It provides F5 BIG-IP LTM hardware loadbalancer as backend for Openstack LBaaS
+service.
+
+OpenStack LBaaS project: https://github.com/Mirantis/openstack-lbaas
+OpenStack LBaaS Client project: https://github.com/Mirantis/openstack-lbaas-cli
+
+How to use this driver
+~~~~~~~~~~~~~~~~~~~~~~
+Requied OpenStack LBaaS service installed.
+
+1. Install "f5_bigip" python module.
+ # git clone https://github.com/gapinc/f5_bigip.git
+ # cd f5_bigip
+ # sudo python setup.py install
+
+2. Edit /etc/balancer-api.conf. In DEFAULT section set device_drivers look
+like:
+    [DEFAULT]
+    device_drivers=F5_BIGIP_LTM=f5_bigip.ltm.Driver
+
+3. Restart balancer-api service
+
+4. Create device via balancer CLI(required OpenStack LBaaS client installed):
+    # balancer device-create --name test_device1 \
+                             --type F5_BIGIP_LTM \
+                             --version 11.1.0 \
+                             --ip $F5_IPADDRESS \
+                             --port 443 \
+                             --user $F5_USER \
+                             --password $F5_PASSWORD
+
+NOTE: This driver has been tested only with 11.1.0 version of F5 BIG-IP LTM.
